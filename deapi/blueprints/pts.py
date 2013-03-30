@@ -28,6 +28,31 @@ def maintainer(source_name):
     return emit(query("maintainer", source_name), True)
 
 
+@pts.route("/maintainer-name/<source_name>", methods=['GET'])
+def maintainer_name(source_name):
+	return emit(query("maintainer_name", source_name), True)
+
+
+@pts.route("/maintainer-email/<source_name>", methods=['GET'])
+def maintainer_email(source_name):
+	return emit(query("maintainer_email", source_name), True)
+
+
+@pts.route("/maintainers/<source_name>", methods=['GET'])
+def maintainers(source_name):
+	return emit(query("maintainers", source_name)._aslist(), True)
+
+
+@pts.route("/uploader-names/<source_name>", methods=['GET'])
+def uploader_names(source_name):
+	return emit(query("uploader_names", source_name)._aslist(), True)
+
+
+@pts.route("/uploader-emails/<source_name>", methods=['GET'])
+def uploader_emails(source_name):
+	return emit(query("uploader_emails", source_name)._aslist(), True)
+
+
 @pts.route("/uploaders/<source_name>", methods=['GET'])
 def uploaders(source_name):
     return emit(query("uploaders", source_name)._aslist(), True)
@@ -58,9 +83,15 @@ def lintian(source_name):
     return emit(query("lintian", source_name), True)
 
 
+# Keeping to preserve backwards-compatibility
 @pts.route("/bugs/<source_name>", methods=['GET'])
 def bugs(source_name):
     return emit(query("bug_counts", source_name), True)
+
+
+@pts.route("/bug-counts/<source_name>", methods=['GET'])
+def bug_counts(source_name):
+	return emit(query("bug_counts", source_name), True)
 
 
 #@pts.route("//<source_name>", methods=['GET'])

@@ -75,7 +75,10 @@ def section(source_name):
 
 @pts.route("/binary-names/<source_name>", methods=['GET'])
 def binary_names(source_name):
-    return emit(query("binary_names", source_name)._aslist(), True)
+	ret = query("binary_names", source_name)
+    if isinstance(ret, basestring):
+        ret = ret.split()
+    return emit(ret, True)
 
 
 @pts.route("/lintian/<source_name>", methods=['GET'])

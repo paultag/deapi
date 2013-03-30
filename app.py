@@ -1,5 +1,6 @@
 from flask import Flask
-from deapi.blueprints.pts import pts, bts
+from deapi.blueprints.pts import pts
+from deapi.blueprints.bts import bts
 
 app = Flask(__name__)
 app.register_blueprint(pts, url_prefix='/pts')

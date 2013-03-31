@@ -9,6 +9,3 @@ ws = SOAPpy.SOAPProxy(default_url)
 
 def query(method, value):
 	return getattr(ws, method)(value)
-
-def query_get_versions(package, dist, arch):
-	return getattr(ws, "get_versions")(package, dist, arch)

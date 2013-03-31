@@ -38,11 +38,6 @@ def maintainer_email(source_name):
 	return emit(query("maintainer_email", source_name), True)
 
 
-@pts.route("/maintainers/<source_name>", methods=['GET'])
-def maintainers(source_name):
-	return emit(query("maintainers", source_name)._aslist(), True)
-
-
 @pts.route("/uploader-names/<source_name>", methods=['GET'])
 def uploader_names(source_name):
 	return emit(query("uploader_names", source_name)._aslist(), True)
@@ -76,9 +71,9 @@ def section(source_name):
 @pts.route("/binary-names/<source_name>", methods=['GET'])
 def binary_names(source_name):
 	ret = query("binary_names", source_name)
-    if isinstance(ret, basestring):
-        ret = ret.split()
-    return emit(ret, True)
+	if isinstance(ret, basestring):
+		ret = ret.split()
+	return emit(ret, True)
 
 
 @pts.route("/lintian/<source_name>", methods=['GET'])
